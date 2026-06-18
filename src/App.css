@@ -446,4 +446,48 @@ button {
   border-radius: 12px;
   border: 1.5px solid rgba(255,255,255,0.12);
 }
+.audio-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.audio-song {
+  font-size: 10px;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+
+/* Yıldız animasyonu - sadece night temasında */
+.app.night .ambient-grid::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 40%, white 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 10%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 30%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 55%, white 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 35% 70%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 80%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 20%, white 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 15% 85%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 50%, white 0%, transparent 100%);
+  opacity: 0;
+  animation: starsAppear 1.5s ease forwards, starsTwinkle 3s ease-in-out 1.5s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes starsAppear {
+  from { opacity: 0; }
+  to   { opacity: 0.6; }
+}
+
+@keyframes starsTwinkle {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 0.25; }
+}
 }

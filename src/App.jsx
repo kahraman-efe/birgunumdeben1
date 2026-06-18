@@ -21,6 +21,12 @@ import imgKedi from "./assets/kedi.jpeg";
 import music1 from "./assets/music1.mp3";
 import music2 from "./assets/music2.mp3";
 
+// Şarkı adlarını tanımla
+const MUSIC_LABELS = {
+  [music1]: "Lo-fi Sabah",
+  [music2]: "Chill Akşam",
+};
+
 // --- VERİ MODELİ ---
 const TIMELINE_DATA = [
   {
@@ -86,6 +92,7 @@ const TIMELINE_DATA = [
 const AmbientAudio = ({ activeAudioSrc }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const songName = MUSIC_LABELS[activeAudioSrc] || "Müzik";
 
   useEffect(() => {
     if (audioRef.current) {
@@ -113,7 +120,10 @@ const AmbientAudio = ({ activeAudioSrc }) => {
       title="Atmosfer Sesini Aç/Kapat"
     >
       <span className="audio-icon">{isPlaying ? "🔊" : "🔇"}</span>
-      <span className="audio-text">{isPlaying ? "Müzik Açık" : "Müzik Kapalı"}</span>
+      <div className="audio-info">
+        <span className="audio-text">{isPlaying ? "Çalıyor" : "Müzik Kapalı"}</span>
+        {isPlaying && <span className="audio-song">{songName}</span>}
+      </div>
       <audio ref={audioRef} src={activeAudioSrc} loop />
     </button>
   );
