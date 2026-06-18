@@ -13,13 +13,10 @@ import imgDevre from "./assets/devre.jpeg";
 import imgSpor from "./assets/spor2.jpeg";
 import imgGitar from "./assets/gitar.jpeg";
 import imgAksamYemegi from "./assets/aksamyemegi.jpeg";
-
 import imgGÜNBATİMİ from "./assets/günbatımı.jpeg";
 import imgDizi from "./assets/fifa.jpeg";
 import imgFifa from "./assets/fifa.jpeg";
 import imgKedi from "./assets/kedi.jpeg";
-
-
 
 import music1 from "./assets/music1.mp3";
 import music2 from "./assets/music2.mp3";
@@ -30,7 +27,7 @@ const TIMELINE_DATA = [
     time: "09:00", label: "Güne Başlangıç", title: "Güne Kendimle Başlıyorum",
     text: "Güne erken başlayıp,Kahvaltımı yapıp, kampüs ringini bekliyorum durakta.",
     mood: "Güne Hazırlık", detail: "Güne odaklanma.",
-     image: imgKahvaltı,
+    image: imgKahvaltı,
     theme: "dawn", accent: "#6673ff", side: "left", audioSrc: music1,
   },
   {
@@ -40,12 +37,13 @@ const TIMELINE_DATA = [
     theme: "focus", accent: "#b2f63b", side: "right", audioSrc: music1,
   },
   {
-  time: "10:30", label: "Kampüs", title: "Fakültede Hasbihal",
-  text: "Dersarasında fakültede arkadaşlarla sohbet ediyoruz.",
-  mood: "Sosyal", detail: "Kampüs havası ve muhabbet.",
-  images: [imgFakülte, imgFakülte1],  // ← tek image yerine dizi
-  theme: "focus", accent: "#6366f1", side: "left", audioSrc: music1,
-},
+    time: "10:30", label: "Kampüs", title: "Fakültede Hasbihal",
+    text: "Dersarasında fakültede arkadaşlarla sohbet ediyoruz.",
+    mood: "Sosyal", detail: "Kampüs havası ve muhabbet.",
+    images: [imgFakülte, imgFakülte1],
+    image: imgFakülte,
+    theme: "focus", accent: "#6366f1", side: "left", audioSrc: music1,
+  },
   {
     time: "13:30", label: "Laboratuvar", title: "Devre Tasarımı",
     text: "Laboratuvarda breadboard üzerinde devre kurarak donanım tarafında pratiğimi geliştiriyorum.",
@@ -237,7 +235,7 @@ export default function App() {
           className={`time-section ${item.side === "right" ? "align-right" : ""}`}
           id={`time-${index}`}
           style={{
-            backgroundImage: `linear-gradient(110deg, rgba(5,7,12,0.78), rgba(5,7,12,0.32) 48%, rgba(5,7,12,0.72)), url("${item.image}")`,
+            backgroundImage: `linear-gradient(110deg, rgba(5,7,12,0.78), rgba(5,7,12,0.32) 48%, rgba(5,7,12,0.72)), url(${item.image})`,
           }}
         >
           <article className="story-panel">
