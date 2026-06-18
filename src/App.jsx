@@ -14,7 +14,7 @@ import imgSpor from "./assets/spor2.jpeg";
 import imgGitar from "./assets/gitar.jpeg";
 import imgAksamYemegi from "./assets/aksamyemegi.jpeg";
 import imgGÜNBATİMİ from "./assets/günbatımı.jpeg";
-import imgDizi from "./assets/fifa.jpeg";
+import imgDizi from "./assets/dizi.jpeg";
 import imgFifa from "./assets/fifa.jpeg";
 import imgKedi from "./assets/kedi.jpeg";
 
@@ -89,13 +89,14 @@ const TIMELINE_DATA = [
     theme: "evening", accent: "#f43f5e", side: "left", audioSrc: music1,
   },
   {
-    time: "22:00", label: "Eğlence", title: "Oyun Saati",
+    time: "21:00", label: "Eğlence", title: "Oyun Saati",
     text: "Biraz fifa oynuyorum ultimate team yada arkadaşla.",
-    mood: "Eğlence", detail: "Rekabet ve keyif.", image: imgFifa,
+    mood: "Eğlence", detail: "Rekabet ve keyif.", 
+    image: imgFifa,
     theme: "night", accent: "#8b5cf6", side: "right", audioSrc: music2,
   },
   {
-  time: "21:00", label: "Gece", title: "Dizi & Film Keyfi",
+  time: "23:00", label: "Gece", title: "Dizi & Film Keyfi",
   text: "Yatmadan önce dizi izlemeye bayılıyorum.İyi bir dizi veya film, günü güzel kapatmanın en kolay yolu.",
   mood: "Rahatlama", detail: "Hikaye, atmosfer ve büyülecilik",
   image: imgDizi,
