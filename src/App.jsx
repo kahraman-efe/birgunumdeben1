@@ -1,125 +1,87 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import "./App.css";
 
-// --- VERİ MODELİ (FOTOĞRAFLARA GÖRE GÜNCELLENMİŞ GÜN AKIŞI) ---
+// --- ASSET İMPORTLARI ---
+import imgKahvaltı from "./assets/kahvaltı.jpeg";
+import imgFotom from "./assets/fotom.jpeg";
+import imgDers from "./assets/ders.jpeg";
+import imgOtobüs from "./assets/otobüsbekleme.jpeg";
+import imgFakülte from "./assets/fakültedehasbihal.jpeg";
+import imgFakülte1 from "./assets/fakülte2.jpeg";
+import imgKahve from "./assets/kahve.jpeg";
+import imgDevre from "./assets/devre.jpeg";
+import imgSpor from "./assets/spor2.jpeg";
+import imgGitar from "./assets/gitar.jpeg";
+import imgAksamYemegi from "./assets/aksamyemegi.jpeg";
+
+import imgGÜNBATİMİ from "./assets/günbatımı.jpeg";
+import imgDizi from "./assets/fifa.jpeg";
+import imgFifa from "./assets/fifa.jpeg";
+import imgKedi from "./assets/kedi.jpeg";
+
+
+
+import music1 from "./assets/music1.mp3";
+import music2 from "./assets/music2.mp3";
+
+// --- VERİ MODELİ ---
 const TIMELINE_DATA = [
   {
-    time: "08:30",
-    label: "Güne Başlangıç",
-    title: "Güne Kendimle Başlıyorum",
-    text: "Güne erken başlayıp günlük planlarımı gözden geçiriyorum.",
-    mood: "Hazırlık",
-    detail: "Güne odaklanma.",
-    image: "/images/fotom.jpeg",
-    theme: "dawn",
-    accent: "#ffd166",
-    side: "left",
-    audioSrc: "/audio/music1.mp3" 
+    time: "09:00", label: "Güne Başlangıç", title: "Güne Kendimle Başlıyorum",
+    text: "Güne erken başlayıp,Kahvaltımı yapıp, kampüs ringini bekliyorum durakta.",
+    mood: "Güne Hazırlık", detail: "Güne odaklanma.",
+     image: imgKahvaltı,
+    theme: "dawn", accent: "#6673ff", side: "left", audioSrc: music1,
   },
   {
-    time: "09:15",
-    label: "Yolculuk",
-    title: "Otobüs Bekleyişi",
+    time: "09:15", label: "Yolculuk", title: "Otobüs Bekleyişi",
     text: "Kampüse gitmek üzere durağa geçip otobüs bekliyorum.",
-    mood: "Sakin",
-    detail: "Sabah rutini ve yolculuk.",
-    image: "/images/otobüsbekleme.jpeg",
-    theme: "focus",
-    accent: "#3b82f6",
-    side: "right",
-    audioSrc: "/audio/music1.mp3" 
+    mood: "Sakin", detail: "Sabah rutini ve yolculuk.", image: imgOtobüs,
+    theme: "focus", accent: "#b2f63b", side: "right", audioSrc: music1,
   },
   {
-    time: "10:30",
-    label: "Kampüs",
-    title: "Fakültede Hasbihal",
-    text: "Bilgisayar Mühendisliği derslerinden önce fakültede arkadaşlarla sohbet ediyoruz.",
-    mood: "Sosyal",
-    detail: "Kampüs havası ve muhabbet.",
-    image: "/images/fakültedehasbihal.jpeg",
-    theme: "focus",
-    accent: "#6366f1",
-    side: "left",
-    audioSrc: "/audio/music1.mp3" 
-  },
+  time: "10:30", label: "Kampüs", title: "Fakültede Hasbihal",
+  text: "Dersarasında fakültede arkadaşlarla sohbet ediyoruz.",
+  mood: "Sosyal", detail: "Kampüs havası ve muhabbet.",
+  images: [imgFakülte, imgFakülte1],  // ← tek image yerine dizi
+  theme: "focus", accent: "#6366f1", side: "left", audioSrc: music1,
+},
   {
-    time: "13:30",
-    label: "Laboratuvar",
-    title: "Devre Tasarımı",
+    time: "13:30", label: "Laboratuvar", title: "Devre Tasarımı",
     text: "Laboratuvarda breadboard üzerinde devre kurarak donanım tarafında pratiğimi geliştiriyorum.",
-    mood: "Analitik",
-    detail: "Kablolar, entegreler ve test.",
-    image: "/images/devre.jpeg",
-    theme: "noon",
-    accent: "#5dd6c8",
-    side: "right",
-    audioSrc: "/audio/music2.mp3" 
+    mood: "Analitik", detail: "Kablolar, entegreler ve test.", image: imgDevre,
+    theme: "noon", accent: "#5dd6c8", side: "right", audioSrc: music2,
   },
   {
-    time: "16:00",
-    label: "Geliştirme",
-    title: "Kahve ve Kodlama",
+    time: "16:00", label: "Geliştirme", title: "Kahve ve Kodlama",
     text: "Sıcak bir kahve eşliğinde Unity projelerimin script'lerini elden geçiriyorum.",
-    mood: "İlham",
-    detail: "Oyun geliştirme ve kafein.",
-    image: "/images/kahve.jpeg",
-    theme: "golden-hour",
-    accent: "#f59e0b",
-    side: "left",
-    audioSrc: "/audio/jazz-piano.mp3" 
+    mood: "İlham", detail: "Oyun geliştirme ve kafein.", image: imgKahve,
+    theme: "golden-hour", accent: "#f59e0b", side: "left", audioSrc: music2,
   },
   {
-    time: "18:30",
-    label: "Mola",
-    title: "Gitar ve Müzik",
+    time: "18:30", label: "Mola", title: "Gitar ve Müzik",
     text: "Günün yorgunluğunu biraz müzikle atmak için gitarımı elime alıyorum.",
-    mood: "Huzur",
-    detail: "Ritim, melodi ve dinlenme.",
-    image: "/images/gitar.jpeg",
-    theme: "evening",
-    accent: "#fb7185",
-    side: "right",
-    audioSrc: "/audio/chillstep.mp3" 
+    mood: "Huzur", detail: "Ritim, melodi ve dinlenme.", image: imgGitar,
+    theme: "evening", accent: "#fb7185", side: "right", audioSrc: music1,
   },
   {
-    time: "20:00",
-    label: "Yenilenme",
-    title: "Akşam Yemeği",
+    time: "20:00", label: "Yenilenme", title: "Akşam Yemeği",
     text: "Kalori takip uygulamama öğünümü girerek günü dengeliyorum. Akşam yemeği vakti.",
-    mood: "Sakinleşme",
-    detail: "Mutfak ve enerji toplama.",
-    image: "/images/aksamyemegi.jpeg",
-    theme: "evening",
-    accent: "#f43f5e",
-    side: "left",
-    audioSrc: "/audio/chillstep.mp3" 
+    mood: "Sakinleşme", detail: "Mutfak ve enerji toplama.", image: imgAksamYemegi,
+    theme: "evening", accent: "#f43f5e", side: "left", audioSrc: music1,
   },
   {
-    time: "21:30",
-    label: "Eğlence",
-    title: "Oyun Saati",
+    time: "21:30", label: "Eğlence", title: "Oyun Saati",
     text: "Menajerlik kariyerime dönüp takımımın taktiklerini ayarlayarak kafa dağıtıyorum.",
-    mood: "Eğlence",
-    detail: "Rekabet ve keyif.",
-    image: "/images/fifa.jpeg",
-    theme: "night",
-    accent: "#8b5cf6",
-    side: "right",
-    audioSrc: "/audio/chillstep.mp3" 
+    mood: "Eğlence", detail: "Rekabet ve keyif.", image: imgFifa,
+    theme: "night", accent: "#8b5cf6", side: "right", audioSrc: music2,
   },
   {
-    time: "23:30",
-    label: "Kapanış",
-    title: "Geceye Veda",
+    time: "23:30", label: "Kapanış", title: "Geceye Veda",
     text: "Günün sonu. Kedimle beraber sessizliğin tadını çıkarıp yeni güne enerji toplamak için uykuya hazırlanıyoruz.",
-    mood: "Dinlenme",
-    detail: "Kapanış, huzur ve uyku.",
-    image: "/images/kedi.jpeg",
-    theme: "night",
-    accent: "#93c5fd",
-    side: "left",
-    audioSrc: "/audio/night-rain.mp3" 
-  }
+    mood: "Dinlenme", detail: "Kapanış, huzur ve uyku.", image: imgKedi,
+    theme: "night", accent: "#93c5fd", side: "left", audioSrc: music1,
+  },
 ];
 
 // --- AMBIENT AUDIO PLAYER ---
@@ -146,8 +108,8 @@ const AmbientAudio = ({ activeAudioSrc }) => {
   };
 
   return (
-    <button 
-      className={`audio-toggle ${isPlaying ? "playing" : ""}`} 
+    <button
+      className={`audio-toggle ${isPlaying ? "playing" : ""}`}
       onClick={togglePlay}
       type="button"
       title="Atmosfer Sesini Aç/Kapat"
@@ -204,7 +166,6 @@ export default function App() {
       if (!section) return;
       const sectionCenter = section.offsetTop + section.offsetHeight * 0.5;
       const distance = Math.abs(sectionCenter - viewportCenter);
-
       if (distance < closestDistance) {
         closestDistance = distance;
         closestIndex = index;
@@ -216,7 +177,6 @@ export default function App() {
 
   useEffect(() => {
     let ticking = false;
-
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -226,11 +186,9 @@ export default function App() {
         ticking = true;
       }
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
     updateScrollState();
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
@@ -241,31 +199,20 @@ export default function App() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.25 }
     );
-
     const currentRefs = sectionRefs.current;
-    currentRefs.forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
+    currentRefs.forEach((section) => { if (section) observer.observe(section); });
     return () => {
-      currentRefs.forEach((section) => {
-        if (section) observer.unobserve(section);
-      });
+      currentRefs.forEach((section) => { if (section) observer.unobserve(section); });
     };
   }, []);
 
   const scrollToSection = (index) => {
-    sectionRefs.current[index]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const activeItem = TIMELINE_DATA[activeIndex] || TIMELINE_DATA[0];
@@ -273,22 +220,14 @@ export default function App() {
   return (
     <main
       className={`app ${activeItem.theme}`}
-      style={{
-        "--accent": activeItem.accent,
-        "--progress": `${progress}%`,
-      }}
+      style={{ "--accent": activeItem.accent, "--progress": `${progress}%` }}
     >
       <h1 className="sr-only">Bir Günümde Ben - İnteraktif Zaman Çizelgesi</h1>
       <div className="ambient-grid" aria-hidden="true" />
-
-      <div className="progress-bar" aria-hidden="true">
-        <div />
-      </div>
+      <div className="progress-bar" aria-hidden="true"><div /></div>
 
       <StickyClock activeItem={activeItem} />
-      
       <AmbientAudio activeAudioSrc={activeItem.audioSrc} />
-
       <TimelineNav activeIndex={activeIndex} onNavigate={scrollToSection} />
 
       {TIMELINE_DATA.map((item, index) => (
@@ -298,7 +237,7 @@ export default function App() {
           className={`time-section ${item.side === "right" ? "align-right" : ""}`}
           id={`time-${index}`}
           style={{
-            backgroundImage: `linear-gradient(110deg, rgba(5, 7, 12, 0.78), rgba(5, 7, 12, 0.32) 48%, rgba(5, 7, 12, 0.72)), url("${item.image}")`,
+            backgroundImage: `linear-gradient(110deg, rgba(5,7,12,0.78), rgba(5,7,12,0.32) 48%, rgba(5,7,12,0.72)), url("${item.image}")`,
           }}
         >
           <article className="story-panel">
