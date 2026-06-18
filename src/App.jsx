@@ -37,18 +37,23 @@ const TIMELINE_DATA = [
     theme: "dawn", accent: "#6673ff", side: "left", audioSrc: music1,
   },
   {
-    time: "09:15", label: "Yolculuk", title: "Otobüs Bekleyişi",
-    text: "Kampüse gitmek üzere durağa geçip otobüs bekliyorum.",
-    mood: "Sakin", detail: "Sabah rutini ve yolculuk.", image: imgOtobüs,
+    time: "09:30", label: "Yolculuk", title: "Otobüs Bekleyişi",
+    text: "Kampüse gitmek üzere durağa geçip ringi bekliyorum.",
+    mood: "Sakin", detail: "Sabah rutini ve yolculuk.", image: imgFotom,
     theme: "focus", accent: "#b2f63b", side: "right", audioSrc: music1,
   },
   {
     time: "10:30", label: "Kampüs", title: "Fakültede Hasbihal",
-    text: "Dersarasında fakültede arkadaşlarla sohbet ediyoruz.",
-    mood: "Sosyal", detail: "Kampüs havası ve muhabbet.",
-    images: [imgFakülte, imgFakülte1],
-    image: imgFakülte,
+    text: "Ders arasında fakültede sigara",
+    mood: "Sosyal", detail: "Kampüs havası",
+    image:imgFakülte1,
     theme: "focus", accent: "#6366f1", side: "left", audioSrc: music1,
+  },
+  {
+    time: "12:30", label: "Kafe", title: "Kahve ve Sohbet",
+    text: "Soğuk bir cold brew eşliğinde arkadaşlarla muhabbet",
+    mood: "Sosyal", detail: "Kampüs insanları ve kahve.", image: imgKahve,
+    theme: "golden-hour", accent: "#f59e0b", side: "left", audioSrc: music2,
   },
   {
     time: "13:30", label: "Laboratuvar", title: "Devre Tasarımı",
@@ -57,13 +62,22 @@ const TIMELINE_DATA = [
     theme: "noon", accent: "#5dd6c8", side: "right", audioSrc: music2,
   },
   {
-    time: "16:00", label: "Geliştirme", title: "Kahve ve Kodlama",
-    text: "Sıcak bir kahve eşliğinde Unity projelerimin script'lerini elden geçiriyorum.",
-    mood: "İlham", detail: "Oyun geliştirme ve kafein.", image: imgKahve,
-    theme: "golden-hour", accent: "#f59e0b", side: "left", audioSrc: music2,
-  },
+  time: "16:30",
+  label: "öğle üstü",
+  title: "Spor & Hareket",
+  text: "Güne enerjik başlamak için ısınıyorum, kaslarımı çalıştırıyorum. Günlük stresii atıp dopaminimi burdan karsılıyorum.",
+  mood: "Enerji",
+  detail: "Dayanıklılık, güç ve motivasyon.",
+  image: imgSpor,
+  theme: "morning",
+  accent: "#34d399",
+  side: "left",
+  audioSrc: music2,
+    bgPosition: "center top", 
+},
+  
   {
-    time: "18:30", label: "Mola", title: "Gitar ve Müzik",
+    time: "19.00", label: "Mola", title: "Gitar ve Müzik",
     text: "Günün yorgunluğunu biraz müzikle atmak için gitarımı elime alıyorum.",
     mood: "Huzur", detail: "Ritim, melodi ve dinlenme.", image: imgGitar,
     theme: "evening", accent: "#fb7185", side: "right", audioSrc: music1,
@@ -75,14 +89,21 @@ const TIMELINE_DATA = [
     theme: "evening", accent: "#f43f5e", side: "left", audioSrc: music1,
   },
   {
-    time: "21:30", label: "Eğlence", title: "Oyun Saati",
-    text: "Menajerlik kariyerime dönüp takımımın taktiklerini ayarlayarak kafa dağıtıyorum.",
+    time: "22:00", label: "Eğlence", title: "Oyun Saati",
+    text: "Biraz fifa oynuyorum ultimate team yada arkadaşla.",
     mood: "Eğlence", detail: "Rekabet ve keyif.", image: imgFifa,
     theme: "night", accent: "#8b5cf6", side: "right", audioSrc: music2,
   },
   {
-    time: "23:30", label: "Kapanış", title: "Geceye Veda",
-    text: "Günün sonu. Kedimle beraber sessizliğin tadını çıkarıp yeni güne enerji toplamak için uykuya hazırlanıyoruz.",
+  time: "21:00", label: "Gece", title: "Dizi & Film Keyfi",
+  text: "Yatmadan önce dizi izlemeye bayılıyorum.İyi bir dizi veya film, günü güzel kapatmanın en kolay yolu.",
+  mood: "Rahatlama", detail: "Hikaye, atmosfer ve büyülecilik",
+  image: imgDizi,
+  theme: "night", accent: "#f16378", side: "left", audioSrc: music2,
+},
+  {
+    time: "00.00", label: "Kapanış", title: "Geceye Veda",
+    text: "Günün sonu.Biraz reels kaydırıp, Kedimle beraber sessizliğin tadını çıkarıp yeni güne enerji toplamak için uykuya hazırlanıyoruz.",
     mood: "Dinlenme", detail: "Kapanış, huzur ve uyku.", image: imgKedi,
     theme: "night", accent: "#93c5fd", side: "left", audioSrc: music1,
   },
@@ -261,4 +282,5 @@ export default function App() {
       ))}
     </main>
   );
+  
 }
