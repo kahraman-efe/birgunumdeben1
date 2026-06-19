@@ -75,6 +75,20 @@ const TIMELINE_DATA = [
   audioSrc: music2,
     bgPosition: "center top", 
 },
+{
+  time: "18.00",
+  label: "Gün Batımı",
+  title: "Sahilde Gün Batımı",
+  text: "Turuncu ve pembe tonlara bürünen gökyüzünü izlerken huzurlu bir akşam",
+  mood: "Huzurlu",
+  detail: "Hafif esinti ve günün son ışıkları.",
+  image: imgGÜNBATİMİ,
+  theme: "sunset-glow",
+  accent: "#fb923c",
+  side: "left",
+  audioSrc: music2,
+},
+
   
   {
     time: "19.00", label: "Mola", title: "Gitar ve Müzik",
@@ -82,6 +96,7 @@ const TIMELINE_DATA = [
     mood: "Huzur", detail: "Ritim, melodi ve dinlenme.", image: imgGitar,
     theme: "evening", accent: "#fb7185", side: "right", audioSrc: music1,
   },
+  
   {
     time: "20:00", label: "Yenilenme", title: "Akşam Yemeği",
     text: "Kalori takip uygulamama öğünümü girerek günü dengeliyorum. Akşam yemeği vakti.",
