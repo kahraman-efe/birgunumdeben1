@@ -521,4 +521,52 @@ button {
   0%, 100% { opacity: 0.6; }
   50%       { opacity: 0.25; }
 }
+@media (max-width: 768px) {
+  .time-section {
+    min-height: 100svh;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .story-panel {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .sticky-clock {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .timeline-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  .timeline-nav button {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .audio-toggle {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .lead {
+    font-size: 0.9rem;
+  }
+}
 }
