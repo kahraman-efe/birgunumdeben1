@@ -78,7 +78,7 @@ const TIMELINE_DATA = [
 {
   time: "18.00",
   label: "Gün Batımı",
-  title: "Sahilde Gün Batımı",
+  title: "KYK da Gün Batımı",
   text: "Turuncu ve pembe tonlara bürünen gökyüzünü izlerken huzurlu bir akşam",
   mood: "Huzurlu",
   detail: "Hafif esinti ve günün son ışıkları.",
